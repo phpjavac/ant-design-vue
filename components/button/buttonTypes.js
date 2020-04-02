@@ -6,7 +6,7 @@ export default () => ({
   icon: PropTypes.string,
   shape: PropTypes.oneOf(['circle', 'circle-outline', 'round']),
   size: PropTypes.oneOf(['small', 'large', 'default']).def('default'),
-  loading: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  loading: PropTypes.func,
   disabled: PropTypes.bool,
   ghost: PropTypes.bool,
   block: PropTypes.bool,

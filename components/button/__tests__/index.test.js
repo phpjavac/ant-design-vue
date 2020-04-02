@@ -102,7 +102,18 @@ describe('Button', () => {
       },
       methods: {
         enterLoading() {
-          this.loading = true;
+          this.loading = () => {
+            return new Promise((res, rej) => {
+              const timeout = Math.random() * 10000;
+              setTimeout(() => {
+                if (timeout > 3000) {
+                  res();
+                } else {
+                  rej();
+                }
+              }, timeout);
+            });
+          };
         },
       },
 

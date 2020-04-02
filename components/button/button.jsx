@@ -21,7 +21,7 @@ export default {
         large: 'lg',
         small: 'sm',
       },
-      sLoading: !!this.loading,
+      sLoading: false,
       hasTwoCNChar: false,
     };
   },
@@ -115,11 +115,21 @@ export default {
         this.hasTwoCNChar = false;
       }
     },
-    handleClick(event) {
+    async handleClick(event) {
       const { sLoading } = this.$data;
       if (sLoading) {
         return;
       }
+      if (this.loading) {
+        try {
+          this.sLoading = true;
+          await this.loading();
+          this.sLoading = false;
+        } catch (error) {
+          this.sLoading = false;
+        }
+      }
+
       this.$emit('click', event);
     },
     insertSpace(child, needInserted) {

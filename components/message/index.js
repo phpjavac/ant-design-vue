@@ -2,6 +2,7 @@ import Notification from '../vc-notification';
 import Icon from '../icon';
 
 let defaultDuration = 3;
+let defaultClose = false;
 let defaultTop;
 let messageInstance;
 let key = 1;
@@ -37,7 +38,8 @@ function getMessageInstance(callback) {
 // type NoticeType = 'info' | 'success' | 'error' | 'warning' | 'loading';
 
 function notice(args) {
-  const duration = args.duration !== undefined ? args.duration : defaultDuration;
+  let duration = args.duration !== undefined ? args.duration : defaultDuration;
+  const close = args.close !== undefined ? args.close : defaultClose;
   const iconType = {
     info: 'info-circle',
     success: 'check-circle',
@@ -74,6 +76,7 @@ function notice(args) {
                   : args.icon
                 : switchIconNode}
               <span>{typeof args.content === 'function' ? args.content(h) : args.content}</span>
+              {close ? <a-icon type="close" onClick={this.destroy} class="close" /> : ''}
             </div>
           );
         },
@@ -116,6 +119,9 @@ const api = {
     }
     if (options.duration !== undefined) {
       defaultDuration = options.duration;
+    }
+    if (options.onClose !== undefined) {
+      defaultClose = options.onClose;
     }
     if (options.prefixCls !== undefined) {
       prefixCls = options.prefixCls;

@@ -44,9 +44,9 @@ export declare class Button extends AntdComponent {
   /**
    * set the loading status of button
    * @default false
-   * @type boolean | { delay: number }
+   * @type function
    */
-  loading: boolean | { delay: number };
+  loading: function;
 
   /**
    * disabled state of button
