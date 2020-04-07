@@ -128,6 +128,7 @@ export default {
         } catch (error) {
           this.sLoading = false;
         }
+        return;
       }
 
       this.$emit('click', event);
