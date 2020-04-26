@@ -18,12 +18,18 @@
     <a-button type="link" :loading="loading">
       Link
     </a-button>
+    <a-modal v-model="st" :loading="loading" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'Demo',
+  data() {
+    return {
+      st: true,
+    };
+  },
   methods: {
     loading() {
       return new Promise((res, rej) => {

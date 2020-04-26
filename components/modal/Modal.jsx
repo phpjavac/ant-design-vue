@@ -66,6 +66,7 @@ const modalProps = (defaultProps = {}) => {
     okType: ButtonType,
     /** 取消按钮文字*/
     cancelText: PropTypes.any,
+    loading: PropTypes.func,
     icon: PropTypes.any,
     /** 点击蒙层是否允许关闭*/
     maskClosable: PropTypes.bool,
@@ -135,7 +136,7 @@ export default {
       this.$emit('ok', e);
     },
     renderFooter(locale) {
-      const { okType, confirmLoading } = this;
+      const { okType, loading } = this;
       const cancelBtnProps = mergeProps(
         { on: { click: this.handleCancel } },
         this.cancelButtonProps || {},
@@ -145,7 +146,7 @@ export default {
           on: { click: this.handleOk },
           props: {
             type: okType,
-            loading: confirmLoading,
+            loading,
           },
         },
         this.okButtonProps || {},
