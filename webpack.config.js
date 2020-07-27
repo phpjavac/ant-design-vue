@@ -12,12 +12,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
+        test: /\.(vue|md)$/,
         loader: 'vue-loader',
       },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        exclude: /pickr.*js/,
         options: {
           presets: [
             [
@@ -81,7 +82,7 @@ module.exports = {
       'ant-design-vue': path.join(__dirname, './components'),
       vue$: 'vue/dist/vue.esm.js',
     },
-    extensions: ['.js', '.jsx', '.vue'],
+    extensions: ['.js', '.jsx', '.vue', '.md'],
   },
   devServer: {
     host: 'localhost',
