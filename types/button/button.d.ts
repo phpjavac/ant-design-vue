@@ -46,7 +46,7 @@ export declare class Button extends AntdComponent {
    * @default false
    * @type function
    */
-  loading: function;
+  loading: Function;
 
   /**
    * disabled state of button
