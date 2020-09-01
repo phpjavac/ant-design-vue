@@ -70,7 +70,8 @@ export default {
     let rowSpan;
 
     if (customRender) {
-      text = customRender(text, record, index, column);
+      // 增加列的index值
+      text = customRender(text, record, index, column.index, column);
       if (isInvalidRenderCellText(text)) {
         tdProps.attrs = text.attrs || {};
         tdProps.props = text.props || {};
